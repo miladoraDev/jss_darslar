@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decrement</title>
+</head>
+<body>
+    <p id="son"></p>
+    <h1 id="time" style="display: none;">Vaqt tugadi</h1>
+    <button onclick="decFunc()">Kamaytirish</button>
+    <script>
+        var son = document.getElementById('son')
+
+        function decFunc(){
+            var boshQiymat = 10
+        son.innerText = boshQiymat
+
+            const intervalId = setInterval(function(){
+                    boshQiymat--
+                    son.innerText = boshQiymat
+
+                    if(boshQiymat <= 0){
+                        alert("Bomba portladi!")
+                        clearInterval(intervalId)
+                    }
+                }, 1000)
+}           
+
+setTimeout(()=>(
+    document.getElementById('time').style.display="block"
+),10000)
+    </script>
+</body>
+</html>

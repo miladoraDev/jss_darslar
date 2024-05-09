@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lug`at</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        body{
+            color: white;
+            background-color: #292828;
+        }
+        header.header{
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+        }
+        header > input[type="text"]{
+            width: 80%;
+            padding: 8px 20px;
+            border: none;
+            color: dodgerblue;
+            background-color: #0a0a0a;
+            border-radius: 10px;
+            outline: none;
+
+        }
+        main.main{
+            width: 80%;
+            margin: 30px 10%;
+            color: white;
+        }
+        .flex{
+             display: flex;
+        }
+        .items-center{
+            align-items: center;
+        }
+        .mx-1{
+            margin: auto 10px;
+        }
+        .primary-color{
+            color: dodgerblue;
+        }
+        #define{
+            font-size: 19px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: capitalize;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .cursor-pointer{
+            cursor: pointer;
+        }
+
+        .hidden{
+            display: none;
+        }
+        @media screen and (max-width: 880px) {
+            header > input[type="text"]{
+                width: 90%;
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <input onchange="searchWord()" type="text" id="search" placeholder="Find a word">
+
+    </header>
+    <main class="main">
+        <h1 id="word"></h1>
+        <p id="tarjima" style="margin: 10px auto;"></p>
+        <div class="flex items-center primary-color" style="margin-top: 10px;">
+        <p id="trans"></p>
+        <svg class="mx-1 cursor-pointer hidden" width="20" height="20" id="speak" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06ZM18.584 5.106a.75.75 0 0 1 1.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 0 1-1.06-1.06 8.25 8.25 0 0 0 0-11.668.75.75 0 0 1 0-1.06Z"/>
+            <path d="M15.932 7.757a.75.75 0 0 1 1.061 0 6 6 0 0 1 0 8.486.75.75 0 0 1-1.06-1.061 4.5 4.5 0 0 0 0-6.364.75.75 0 0 1 0-1.06Z" />
+          </svg>
+          
+        </div>
+        <p id="define" class="hidden">DEFINITIONS</p>
+    </main>
+    <script>
+        var word = document.querySelector('#word')
+        var trans = document.querySelector('#trans')
+        var define = document.querySelector('#define')
+        var speak = document.querySelector('#speak')
+        var tarjimaBox = document.querySelector('#tarjima')
+
+
+
+        const ApiKey = 'trnsl.1.1.20240328T172133Z.800fbf38653eb71f.274911e5561765645d307633ea22ebddc2a2156e'
+
+        const url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
+
+
+
+        async function yandexTrans(word){
+            const res = await fetch(`${url}?key=${ApiKey}&text=${word}&lang= en-uz`)
+
+            const data = await res. json()
+            return data
+        } 
+
+
+        
+        async function searchWord() {
+            var wordInput = document.querySelector('#search').value
+            var searchWord = wordInput.toLowerCase()
+
+            try{
+                if(!searchWord){
+                    alert("So`zni kiriting!")
+                    return
+                }
+            
+                const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
+            const data = await res.json()
+            word.innerHTML = data[0].word
+            trans.innerHTML = data[0].phonetic
+            var audioURL = data[0].phonetics[0].audio 
+
+            let tarjima = await yandexTrans(searchWord)
+             tarjimaBox.innerHTML = tarjima.text[0]
+
+
+             document.querySelector('#search').value = ''
+        
+
+
+
+            if(audioURL){
+                speak.classList.remove('hidden')
+            }
+
+            function playAudio(){
+                var audio = new Audio()
+            }
+
+            speak.onclick = () => {
+                playAudio()
+            }
+
+
+            console.log(data[0].word)
+
+            }
+            catch(error){
+                console.log(error)
+            }
+
+            
+        }
+    </script>
+</body>
+</html>

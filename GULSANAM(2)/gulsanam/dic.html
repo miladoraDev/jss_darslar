@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div id="data"></div>
+
+    <script>
+        var parentEl = document.querySelector('#data')
+        let dataBody = ''
+        async function getData(){
+            const res = await fetch('./dictionary.json')
+            const datas = await res.json()
+            for(let data of datas){
+            console.log(data)
+            dataBody +=`
+            <div style="margin-bottom: 10px">
+                <p><b>${data.word}</b> ${data.tarjima}</p>
+                <details>
+                    <summary><b>Misol:</b></summary>
+                    <code style="color:red">${data.example.split('\n').join('<br>')}</code>
+                    </details>
+                    </div>
+            `
+        }
+      parentEl.innerHTML = dataBody
+    }
+        getData()
+    </script>
+</body>
+</html>

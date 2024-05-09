@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-box{
+            width: 350px;
+            height: 350px;
+            margin-top: 100px;
+            background: #03e09d;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 6px 15px #efefef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        
+        }
+
+        .title{
+            font-size: 28px;
+            color: #ffffff;
+            margin: 15px auto;
+            font-family: sans-serif;
+        }
+
+        .info-box{
+            width: 90%;
+            margin: 6px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 20px;
+            border: 1px solid #03e09d;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        .login-btn{
+            padding: 10px 20px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            outline: none;
+            width: 50%;
+            margin-top: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+.loader {
+  width: 15px;
+  margin: auto 5px;
+  padding: 2px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #25b09b;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
+.hidden{
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="" class="form-box">
+            <h1 class="title">Login</h1>
+
+            <div class="info-box">
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="info-box">
+                <input type="text" id="ism" name="ism" placeholder="Your name">
+            </div>
+            <div class="info-box">
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
+            <button class="login-btn">Log In
+                <div class="loader hidden"></div>
+            </button>
+        </form>
+        <p id="notify" style="margin-top: 10px; color: red;"></p>
+    </div>
+
+    <script>
+        var form = document.querySelector('form');
+        var loader = document.querySelector('.loader')
+        var notify = document.querySelector('#notify')
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            var username = document.querySelector('#username').value
+            var ism = document.querySelector('#ism').value
+            var password = document.querySelector('#password').value
+
+            if(!username  || !password){
+                notify.innerText = "Barcha maydon to'ldirilishi shart!"
+                return
+            }
+
+            loader.classList.remove('hidden')
+
+            if(username === "prouser"  && Number(password) === 12345678){
+
+                var userData = {
+                    ism: ism,
+                    isLoggedIn: true
+                }
+
+                  localStorage.setItem('user', JSON.stringify(userData))
+                setTimeout(() => {
+                    window.location.href="./home.html"
+
+                }, 1000)
+
+            }
+            else{
+               notify.innerText = "Parol yoki username xato!"
+                loader.classList.add('hidden')
+            }
+        
+        }    
+
+    </script>
+</body>
+</html>

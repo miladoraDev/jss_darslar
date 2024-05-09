@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="loader"></div>
+    </div>
+
+    <div id="auth" class="hidden">
+    <h1>Siz tizimga kirmagansiz</h1>
+    <a href="./index.html"><button>Login</button></a>
+    </div>
+    
+    
+    <h1 id="welcome" class="hidden"><span id="name"></span>, Xush kelibsiz!</h1>
+    <button id="out" onclick="logOut()">Log Out</button>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () =>{
+            var user = localStorage.getItem('user');        
+
+            if(!user){
+                document.querySelector('.box').classList.add('hidden');
+                document.querySelector('#auth').classList.remove('hidden')
+                document.querySelector('#out').classList.add('hidden')
+            }
+
+            const{ isLoggedIn, ism } = JSON.parse(user);
+            document.querySelector('#name').innerText = ism
+            document.querySelector('.box').classList.add('hidden')
+            document.querySelector('#welcome').classList.remove('hidden')
+        })
+        
+        function logOut () {
+            localStorage.removeItem('user')
+            window.location.href = './index.html'
+        }
+    </script>
+
+</body>
+</html>

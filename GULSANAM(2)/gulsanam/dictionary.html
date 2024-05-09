@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lug`at</title>
+</head>
+<body>
+    <input type="text" id="word">
+    <button id="izlaBtn">Izla</button>
+    <div id="result"></div>
+    <script>
+        
+        
+
+        var btn = document.getElementById('izlaBtn')
+        var result = document.getElementById('result')
+
+        var words = {
+            friend: "do`st",
+            family: "oila",
+            road: "yo`l",
+            human: "inson",
+            pen: "ruchka",
+            honey: "pul"
+        }
+        btn.onclick = () => {
+            var searchWord = document.getElementById('word')
+            var targetWord = searchWord.value.toLowerCase()
+            if(words.hasOwnProperty(targetWord)){
+                result.innerHTML =`<b>${targetWord}</b> - <i> ${words[targetWord]}`
+               
+            }
+            else{
+                result.innerHTML ="So`z topilmadi!"
+            }
+        }
+        document.getElementById('word').oninput = () =>{
+            result.innerHTML = ''
+        }
+
+    </script>
+</body>
+</html>

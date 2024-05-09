@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        *{
+    background-color: rgb(0, 199, 249);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.completed{
+    text-decoration: line-through;
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.header{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header >input{
+    width: 100%;
+    border: 2px solid white;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 8px;
+    outline: none;
+    color: #292929;
+}
+.header > input::placeholder{
+    color: #868686;
+}
+.header > button{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: auto 4px;
+    color: white;
+    background: linear-gradient(90deg, #0000ff, #0380b6);
+    outline: none;
+}
+.items{
+    width: 400px;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 8px;
+}
+ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;                             
+}
+.deleteBtn{
+    padding: 6px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+.li{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin: 5px auto;
+    padding: 5px;
+    border-radius: 2px;
+    font-size: 18px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <input type="text" id="to-do-item" placeholder="Add item">
+            <button id="addItem">Add</button>
+        </div>
+        <div class="items">
+            <ul>
+
+
+
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        var button = document.getElementById('addItem')
+        var parentList = document.querySelector('ul')
+        button.onclick = () => {
+            var newItem = document.getElementById('to-do-item')
+            if(!newItem.value){
+                alert("Maydon to`ldirilishi kerak")
+                return
+            }
+            var li = document.createElement('li')
+            li.textContent = newItem.value
+            li.classList.add('li')
+            li.onclick = () => {
+                selected()
+            } 
+            newItem.value = ""
+            var deleteBtn = document.createElement('button')
+            deleteBtn.textContent = "Delete"
+            deleteBtn.classList.add('deleteBtn')
+            deleteBtn.onclick = (event) => {
+                deleteTask(event)
+            }
+            li.appendChild(deleteBtn)
+            parentList.appendChild(li)
+        }
+        function selected() {
+            let task = event.target
+            task.classList.toggle('completed')
+        }
+        function deleteTask(event){
+            let task = event.target.parentNode
+            task.remove()
+        }
+    </script>
+</body>
+</html>   

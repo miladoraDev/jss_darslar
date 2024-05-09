@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Date (Sana)</title>
+</head>
+<body>
+    <p id="sana"></p>
+    <p id="tasbehNomi"></p>
+    <button onclick="incFunc()">Tasbeh qaytarish</button>
+
+    <script>
+        /*
+        var sana = new Date()
+        var yil = sana.getFullYear()
+        var oy = sana.getMonth()
+        var kun = sana.getDate()
+        var soat = sana.getHours()
+        var daqiqa = sana.getMinutes()
+        var soniya = sana.getSeconds()
+        var millisoniya = sana.getMilliseconds()
+        document.getElementById('sana').innerHTML= `${yil}-${oy+1}-${kun} <br> ${soat}:${daqiqa}:${soniya}:${millisoniya}
+        `
+        */
+
+
+        //Increment (++) - ko`payib borish
+        //Decrement (--) - kamayib borish
+
+        var tasbehSoni = 0;
+        var tasbehNomi = "Subhanalloh"
+        document.getElementById('sana').innerText= tasbehSoni
+        var nomi = document.getElementById('tasbehNomi') 
+        nomi.innerText = tasbehNomi
+        
+        function incFunc(){
+            if(tasbehSoni < 33){
+                tasbehSoni++
+            document.getElementById('sana').innerText= tasbehSoni
+            }
+            else if(tasbehSoni=== 33 || tasbehSoni< 66){
+                tasbehSoni++
+                document.getElementById('sana').innerText= tasbehSoni
+                nomi.innerText ="Alhamdulillah"
+            }
+            else if(tasbehSoni === 66 || tasbehSoni < 99){
+
+                tasbehSoni++
+                document.getElementById('sana').innerText= tasbehSoni
+                nomi.innerText ="Allohu Akbar"
+            }
+            else if(tasbehSoni === 99){
+                var javob = confirm ('Qayta sanaysizmi?')
+                if (javob){
+                    tasbehSoni = 0
+                    document.getElementById('sana').innerText= tasbehSoni
+                nomi.innerText = tasbehNomi
+            
+                     return
+                }
+            }
+        }
+    </script>
+</body>
+</html>

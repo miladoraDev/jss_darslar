@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop</title>
+</head>
+<body>
+    <p id="soni"></p>
+    <div id="content"></div>
+    <script>
+        /*
+        var users = ["Sarvar" ,"Laylo", "Muhammad", "Lobar", "Alisher"]
+        
+        for(var user of users){
+            document.getElementById('content').innerHTML += user + "<br>"
+        }
+        */
+       /*
+       var user = {
+        ism: 'Gulsanam',
+        familiyasi: 'Eshquvvatova',
+        yoshi: 16,
+        shahar:'Xatirchi',
+         isComing: true
+       
+       }
+       document.getElementById('content').innerHTML =
+       ` Ism: ${user.ism} <br> 
+       Familiyasi: ${user.familiyasi} <br>
+        Yoshi: ${user.yoshi} <br> 
+        Shahri; ${user.shahar}  <br> 
+        Darsga qatnashdi: ${user.isComing}`
+        */
+        var questions = [
+            {
+                q: "Amir Temur qachon tug`ulgan ?",
+                variantlar: [
+                    'A) 1299-yil',
+                    'B) 1336-yil',
+                    'C) 1441-yil'
+
+                ],
+                javob: 1
+            },
+            {
+                q: "Alisher Navoiy qachon tug`ulgan ?",
+                variantlar: [
+                    'A) 1299-yil',
+                    'B) 1336-yil',
+                    'C) 1441-yil'
+
+                ],
+                javob: 2
+            }
+        ]
+        document.getElementById('soni').innerText = 'Jami savollar:' + questions.length
+       questions.forEach((question, index) => {
+        document.getElementById('content').innerHTML +=`
+        <div>
+            
+            <label>${index+1}. ${question.q}</label><br>
+            <div>
+                <input type="radio" value="${question.variantlar[0]}" name="q_${index}"><span>${question.variantlar[0]}</span>
+                <input type="radio" value="${question.variantlar[1]}" name="q_${index}"><span>${question.variantlar[1]}</span>
+                <input type="radio" value="${question.variantlar[2]}" name="q_${index}"><span>${question.variantlar[2]}</span>
+            </div>
+        </div>  
+                `
+        })
+    </script>
+    
+</body>
+</html>

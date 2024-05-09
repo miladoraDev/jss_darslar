@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "word": "background",
+        "tarjima": "orqa fon",
+        "example": "body {\n background: red\n}"
+    },
+    {
+        "id": "2",
+        "word": "color",
+        "tarjima": "rang",
+        "example": "btn {\n color: yellow\n}"
+    },
+    {
+        "id": "3",
+        "word": "width",
+        "tarjima": "eni",
+        "example": "header {\n width: 200px\n}"
+    },
+    {
+        "id": "4",
+        "word": "height",
+        "tarjima": "balandligi",
+        "example": "title {\n height: 400px\n}"
+    },
+     {
+        "id": "5",
+        "word": "button",
+        "tarjima": "tugma",
+        "example": "&lt;button&gt;&lt/button&gt;"
+    },
+    {
+        "id": "5",
+        "word": "h1",
+        "tarjima": "sarlavha 1",
+        "example": "&lt;h1&gt;Bu bosh sarlavha&lt;/h1&gt;"
+    }
+]

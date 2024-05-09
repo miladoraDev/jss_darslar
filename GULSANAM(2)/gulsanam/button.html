@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons</title>
+    <style>
+        .btn{
+            padding: 4px 16px;
+            border: none;
+            margin: 10px;
+        }
+        .btn-alert{
+            color: white;
+            background-color: red;
+        }
+        .btn-primary{
+            color: white;
+            background-color: dodgerblue;
+        }
+        .btn-info{
+            color: white;
+            background-color: #009ece;
+        }
+        .btn-dark{
+            color: white;
+            background-color: #000000;
+        }
+        .btn-warning{
+            color: white;
+            background-color: #f5c400;
+        }
+        .btn-success{
+            color: white;
+            background-color: #04df6e;
+        }
+        .alert{
+            width: 40%;
+            background: #d3d3d3;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .alert > p{
+            font-size: 13px;
+        }
+        .hidden{
+            display: none;
+        }
+        .block{
+            display: block;
+        }
+        .alert-danger{
+            background-color: #ff0000;
+            color: white;
+        }
+        
+        .alert-primary{
+            background-color: dodgerblue;
+            color: white;
+        }
+        .alert-info{
+            color: white;
+            background-color: #009ece;
+        }
+        .alert-dark{
+            color: white;
+            background-color: #000000;
+        }
+        .alert-warning{
+            color: white;
+            background-color: #f5c400;
+        }
+        .alert-success{
+            color: white;
+            background-color: #04df6e;
+        }
+
+        .fade-in{
+            animation-name: fade-in;
+            animation-duration: .5s;
+            animation-iteration-count: 1;
+            animation-timing-function: ease;
+            transition: .5s;
+        } 
+         @keyframes fade-in{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+    
+  
+    
+    </style>
+</head>
+<body>
+    <div class="alert">
+        <p>Bu alert modal</p>
+    </div>
+
+    <div>
+        <button class="btn btn-alert">Alert</button>
+    </div>
+    <div>
+        <button class="btn btn-primary">Primary</button>
+    </div>
+    <div>
+        <button class="btn btn-warning">Warning</button>
+    </div>
+    <div>
+        <button class="btn btn-info">Info</button>
+    </div>
+    <div>
+        <button class="btn btn-dark">Dark</button>
+    </div>
+    <div>
+        <button class="btn btn-success">Success</button>
+    </div>
+    <div>
+        <button class="btn btn-light">Light</button>
+    </div>
+    <script>
+        var alertBtn = document.querySelector('.btn-alert')
+        var primaryBtn = document.querySelector('.btn-primary')
+        var infoBtn = document.querySelector('.btn-info')
+        var warningBtn = document.querySelector('.btn-warning')
+        var successBtn = document.querySelector('.btn-success')
+        var darkBtn = document.querySelector('.btn-dark')
+        var lightBtn = document.querySelector('.btn-light')
+        var alertModal = document.querySelector('.alert')
+        
+        alertBtn.onclick = () =>{
+            alertModal.classList.add('block')
+            alertModal.classList.add('alert-danger')
+            alertModal.classList.add('fade-in')
+            
+        if(alertModal.classList.contains('block')){
+            setTimeout(() => {
+                alertModal.classList.remove('block')
+                alertModal.classList.add('hidden')
+                alertModal.classList.remove('alert-danger')
+            },2000)
+            }
+        }
+
+
+        primaryBtn.onclick = () =>{
+            alertModal.classList.add('block')
+            alertModal.classList.add('alert-primary')
+            alertModal.classList.add('fade-in')
+            
+        if(alertModal.classList.contains('block')){
+            setTimeout(() => {
+                alertModal.classList.remove('block')
+                alertModal.classList.add('hidden')
+                alertModal.classList.remove('alert-primary')
+            },2000)
+            }
+        }
+
+
+        infoBtn.onclick = () =>{
+            alertModal.classList.add('block')
+            alertModal.classList.add('alert-info')
+            alertModal.classList.add('fade-in')
+            
+        if(alertModal.classList.contains('block')){
+            setTimeout(() => {
+                alertModal.classList.remove('block')
+                alertModal.classList.add('hidden')
+                alertModal.classList.remove('alert-info')
+            },2000)
+            }
+        }
+
+       warningBtn.onclick = () =>{
+            alertModal.classList.add('block')
+            alertModal.classList.add('alert-warning')
+            alertModal.classList.add('fade-in')
+            
+        if(alertModal.classList.contains('block')){
+            setTimeout(() => {
+                alertModal.classList.remove('block')
+                alertModal.classList.add('hidden')
+                alertModal.classList.remove('alert-warning')
+            },2000)
+            }
+        }
+        darkBtn.onclick = () =>{
+            alertModal.classList.add('block')
+            alertModal.classList.add('alert-dark')
+            alertModal.classList.add('fade-in')
+            
+        if(alertModal.classList.contains('block')){
+            setTimeout(() => {
+                alertModal.classList.remove('block')
+                alertModal.classList.add('hidden')
+                alertModal.classList.remove('alert-dark')
+            },2000)
+            }
+        }
+
+       successBtn.onclick = () =>{
+            alertModal.classList.add('block')
+            alertModal.classList.add('alert-success')
+            alertModal.classList.add('fade-in')
+            
+        if(alertModal.classList.contains('block')){
+            setTimeout(() => {
+                alertModal.classList.remove('block')
+                alertModal.classList.add('hidden')
+                alertModal.classList.remove('alert-success')
+            },2000)
+            }
+        }
+        
+       lightBtn.onclick = () =>{
+            alertModal.classList.add('block')
+            alertModal.classList.add('alert-light')
+            alertModal.classList.add('fade-in')
+            
+        if(alertModal.classList.contains('block')){
+            setTimeout(() => {
+                alertModal.classList.remove('block')
+                alertModal.classList.add('hidden')
+                alertModal.classList.remove('alert-light')
+            },2000)
+            }
+        }
+    </script>
+</body>
+</html>
